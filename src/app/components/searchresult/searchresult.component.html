@@ -1,4 +1,14 @@
 <div class="meal-result">
   <h2 class="title">Your Search Results:</h2>
-  <div id="meal"></div>
+  <div id="meal">
+    <ng-container *ngIf="recipes.length; else loading">
+      <div *ngFor="let recipe of recipes">
+        <p>{{ recipe.strMeal }}</p>
+        <img [src]="recipe.strMealThumb" alt="{{ recipe.strMealThumb }}" />
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <p>Loading recipes...</p>
+    </ng-template>
+  </div>
 </div>

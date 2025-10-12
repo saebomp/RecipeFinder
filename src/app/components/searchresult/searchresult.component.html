@@ -2,9 +2,11 @@
   <h2 class="title">Your Search Results:</h2>
   <div id="meal">
     <ng-container *ngIf="recipes.length; else loading">
-      <div *ngFor="let recipe of recipes">
-        <p>{{ recipe.strMeal }}</p>
-        <img [src]="recipe.strMealThumb" alt="{{ recipe.strMealThumb }}" />
+      <div *ngFor="let recipe of recipes" class="meal-item">
+        <p class="meal-name">{{ recipe.strMeal }}</p>
+        <div class="meal-img">
+          <img [src]="recipe.strMealThumb" alt="{{ recipe.strMealThumb }}" />
+        </div>
       </div>
     </ng-container>
     <ng-template #loading>

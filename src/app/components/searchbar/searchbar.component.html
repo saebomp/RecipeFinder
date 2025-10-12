@@ -1,17 +1,20 @@
 <div class="container">
   <div class="meal-search">
     <h2 class="title">Find Meals For Your Ingredients</h2>
-
-    <div class="meal-search-box">
-      <input
-        type="text"
-        class="search-control"
-        placeholder="Enter an ingredient"
-        id="search-input"
-      />
-      <button type="submit" class="search-btn btn" id="search-btn">
-        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
-      </button>
-    </div>
+    <form (ngSubmit)="searchRecipes()">
+      <div class="meal-search-box">
+        <input
+          type="text"
+          class="search-control"
+          placeholder="Enter an ingredient"
+          id="search-input"
+          [(ngModel)]="searchInput"
+          name="searchInput"
+        />
+        <button type="submit" class="search-btn btn" id="search-btn">
+          <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+        </button>
+      </div>
+    </form>
   </div>
 </div>

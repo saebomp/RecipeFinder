@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { CommonModule } from '@angular/common';
 
@@ -11,19 +11,18 @@ import { CommonModule } from '@angular/common';
 })
 export class SearchresultComponent {
   recipes: any[] = [];
+  @Input() ingredient: string = '';
+
   constructor(private apiService: ApiService) {}
-  ngOnInit(): void {
-    this.apiService.getRecipes().subscribe({
-      next: (data) => {
-        console.log('API response:', data);
-        this.recipes = data.meals;
-      },
-      error: (err) => {
-        console.error('API error:', err);
-      },
-      complete: () => {
-        console.log('API call completed');
-      },
-    });
+
+  ngOnChanges() {
+    //@Input()으로 받은 값이 바뀔 때마다 자동으로 실행
+    if (this.ingredient) {
+      this.apiService.getRecipes(this.ingredient).subscribe({
+        next: (res: any) => {
+          this.recipes = res.meals || [];
+        },
+      });
+    }
   }
 }

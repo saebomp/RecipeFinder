@@ -1,5 +1,5 @@
 <div class="meal-wrapper">
-  <app-searchbar></app-searchbar>
-  <app-searchresult></app-searchresult>
+  <app-searchbar (searchEvent)="onSearch($event)"></app-searchbar>
+  <app-searchresult [ingredient]="selectedIngredient"></app-searchresult>
 </div>
 <router-outlet />

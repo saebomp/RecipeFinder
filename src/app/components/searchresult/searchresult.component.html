@@ -1,16 +1,30 @@
 <div class="meal-result">
   <h2 class="title">Your Search Results:</h2>
-  <div id="meal">
-    <ng-container *ngIf="recipes.length; else loading">
-      <div *ngFor="let recipe of recipes" class="meal-item">
-        <p class="meal-name">{{ recipe.strMeal }}</p>
-        <div class="meal-img">
-          <img [src]="recipe.strMealThumb" alt="{{ recipe.strMealThumb }}" />
-        </div>
+  <div>
+    <div *ngIf="!hasSearched"></div>
+
+    <div *ngIf="hasSearched">
+      <div *ngIf="isLoading; else results">
+        <p>Loading recipes...</p>
       </div>
-    </ng-container>
-    <ng-template #loading>
-      <p>Loading recipes...</p>
-    </ng-template>
+
+      <ng-template #results>
+        <div *ngIf="recipes.length; else noResults" id="meal">
+          <div *ngFor="let recipe of recipes" class="meal-item">
+            <div class="meal-img">
+              <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" />
+            </div>
+            <p class="meal-name">{{ recipe.strMeal }}</p>
+            <div class="recipe-btn" (click)="openRecipe(recipe.idMeal)">
+              Get Recipe
+            </div>
+          </div>
+        </div>
+
+        <ng-template #noResults>
+          <p>No recipes found.</p>
+        </ng-template>
+      </ng-template>
+    </div>
   </div>
 </div>

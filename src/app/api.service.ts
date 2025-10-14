@@ -14,4 +14,9 @@ export class ApiService {
     const url = `${this.apiUrl}${ingredient}`;
     return this.http.get<any>(url);
   }
+  getRecipeById(id: string): Observable<any> {
+    return this.http.get(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+    );
+  }
 }

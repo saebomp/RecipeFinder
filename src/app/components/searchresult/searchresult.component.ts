@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-searchresult',
@@ -15,7 +16,7 @@ export class SearchresultComponent {
   isLoading = false;
   hasSearched = false;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnChanges() {
     //@Input()으로 받은 값이 바뀔 때마다 자동으로 실행
@@ -41,6 +42,6 @@ export class SearchresultComponent {
     });
   }
   openRecipe(id: string) {
-    window.open(`/recipe/${id}`, '_blank');
+    this.router.navigate(['/recipe', id]);
   }
 }

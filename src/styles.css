@@ -20,6 +20,13 @@ body {
   line-height: 1.6;
   font-family: "Poppins", sans-serif;
 }
+.meal-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #fff;
+  text-align: center;
+}
 
 /*  */
 .btn {
@@ -56,6 +63,7 @@ body {
   -moz-transition: all 0.4s linear;
   -ms-transition: all 0.4s linear;
   -o-transition: all 0.4s linear;
+  cursor: pointer;
 }
 .recipe-btn:hover {
   background: var(--tenne-tawny-dark);

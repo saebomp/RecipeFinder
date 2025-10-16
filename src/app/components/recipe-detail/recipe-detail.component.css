@@ -1,0 +1,11 @@
+.back-btn {
+  border: none;
+  background: none;
+  .faCircleArrowLeft {
+    font-size: 40px;
+    color: var(--tenne-tawny);
+    &:hover {
+      color: var(--tenne-tawny-dark);
+    }
+  }
+}

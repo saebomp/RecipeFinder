@@ -1,5 +1,20 @@
 <div class="meal-wrapper">
-  <button routerLink="/" class="back-btn">
-    <fa-icon [icon]="faCircleArrowLeft" class="faCircleArrowLeft"></fa-icon>
-  </button>
+  <div class="top-bar">
+    <button routerLink="/" class="back-btn">
+      <fa-icon [icon]="faCircleArrowLeft" class="faCircleArrowLeft"></fa-icon>
+    </button>
+  </div>
+  <div class="recipe-container">
+    <div *ngFor="let recipe of recipes">
+      <p class="meal-name">{{ recipe.strMeal }}</p>
+      <div class="meal-img">
+        <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" />
+      </div>
+      <ul class="ingredient-list">
+        <li *ngFor="let item of ingredients">
+          {{ item.ingredient }} / {{ item.measure }}
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

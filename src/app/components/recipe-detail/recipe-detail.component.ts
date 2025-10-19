@@ -16,6 +16,8 @@ export class RecipeDetailComponent implements OnInit {
   recipes: any;
   faCircleArrowLeft = faCircleArrowLeft;
   ingredients: { ingredient: string; measure: string }[] = [];
+  recipe: any;
+  instructionLines: string[] = [];
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 

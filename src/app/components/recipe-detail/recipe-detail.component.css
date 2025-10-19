@@ -1,4 +1,5 @@
 .back-btn {
+  cursor: pointer;
   border: none;
   background: none;
   .faCircleArrowLeft {
@@ -9,15 +10,34 @@
     }
   }
 }
+.recipe-container {
+  h1 {
+    padding: 15px 0;
+  }
+}
+.meal-img {
+  img {
+    width: 60%;
+    border-radius: 10px;
+  }
+}
 .ingredient-list {
   list-style: none;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
   li {
     white-space: nowrap;
     border: 1px solid #dedede;
     border-radius: 7px;
     padding: 8px;
-    margin-right: 5px;
+    margin: 0 5px 5px 0;
+  }
+}
+.recipe-details {
+  text-align: left;
+  h3 {
+    margin-bottom: 20px;
   }
 }

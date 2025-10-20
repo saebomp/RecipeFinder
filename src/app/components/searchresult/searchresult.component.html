@@ -1,30 +1,45 @@
 <div class="meal-result">
-  <h2 class="title">Your Search Results:</h2>
-  <div>
-    <div *ngIf="!hasSearched"></div>
+  <!-- 로딩 표시 -->
+  <div *ngIf="isLoading">
+    <p>Loading recipes...</p>
+  </div>
+
+  <!-- 로딩이 끝난 경우 -->
+  <div *ngIf="!isLoading" id="meal">
+    <!-- 검색 후 -->
 
     <div *ngIf="hasSearched">
-      <div *ngIf="isLoading; else results">
-        <p>Loading recipes...</p>
-      </div>
-
-      <ng-template #results>
-        <div *ngIf="recipes.length; else noResults" id="meal">
-          <div *ngFor="let recipe of recipes" class="meal-item">
-            <div class="meal-img">
-              <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" />
-            </div>
-            <p class="meal-name">{{ recipe.strMeal }}</p>
-            <div class="recipe-btn" (click)="openRecipe(recipe.idMeal)">
-              Get Recipe
-            </div>
+      <div *ngIf="recipes.length > 0; else noResults">
+        <h2 class="title">Your Search Results:</h2>
+        <div *ngFor="let recipe of recipes" class="meal-item">
+          <div class="meal-img">
+            <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" />
+          </div>
+          <p class="meal-name">{{ recipe.strMeal }}</p>
+          <div class="recipe-btn" (click)="openRecipe(recipe.idMeal)">
+            Get Recipe
           </div>
         </div>
-
-        <ng-template #noResults>
-          <p>No recipes found.</p>
-        </ng-template>
-      </ng-template>
+      </div>
     </div>
+
+    <!-- 검색 전 (랜덤 레시피) -->
+    <div *ngIf="!hasSearched && recipes.length > 0">
+      <h2 class="title">Random Recipe Picks:</h2>
+      <div *ngFor="let recipe of recipes" class="meal-item">
+        <div class="meal-img">
+          <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" />
+        </div>
+        <p class="meal-name">{{ recipe.strMeal }}</p>
+        <div class="recipe-btn" (click)="openRecipe(recipe.idMeal)">
+          Get Recipe
+        </div>
+      </div>
+    </div>
+
+    <!-- 검색 후 결과 없을 때 -->
+    <ng-template #noResults>
+      <h2 class="title">No recipes found.</h2>
+    </ng-template>
   </div>
 </div>

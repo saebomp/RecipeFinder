@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-searchresult',
@@ -18,6 +19,24 @@ export class SearchresultComponent {
 
   constructor(private apiService: ApiService, private router: Router) {}
 
+  ngOnInit() {
+    this.isLoading = true;
+    const randomCalls = Array.from({ length: 6 }, () =>
+      this.apiService.getRandomRecipe()
+    );
+
+    forkJoin(randomCalls).subscribe({
+      next: (results: any[]) => {
+        this.recipes = results.map((res) => res.meals[0]);
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Random API error:', err);
+        this.isLoading = false;
+      },
+    });
+  }
+
   ngOnChanges() {
     //@Input()으로 받은 값이 바뀔 때마다 자동으로 실행
     if (this.ingredient) {
@@ -26,7 +45,7 @@ export class SearchresultComponent {
 
       this.apiService.getRecipes(this.ingredient).subscribe({
         next: (res: any) => {
-          this.recipes = res.meals || [];
+          this.recipes = res.meals || this.recipes;
           this.isLoading = false;
         },
         error: (err) => {

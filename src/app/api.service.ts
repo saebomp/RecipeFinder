@@ -19,4 +19,9 @@ export class ApiService {
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
     );
   }
+  getRandomRecipe(): Observable<any> {
+    return this.http.get<any>(
+      'https://www.themealdb.com/api/json/v1/1/random.php'
+    );
+  }
 }

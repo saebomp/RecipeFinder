@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
-import { SearchPageComponent } from './components/search-page/search-page.component';
+import { RecipeDetailComponent } from './components/recipedetail/recipedetail.component';
+import { SearchPageComponent } from './components/searchpage/searchpage.component';
 
 export const routes: Routes = [
   { path: '', component: SearchPageComponent },

@@ -6,8 +6,8 @@ import { SearchbarComponent } from '../searchbar/searchbar.component';
   selector: 'app-search-page',
   standalone: true,
   imports: [SearchbarComponent, SearchresultComponent],
-  templateUrl: './search-page.component.html',
-  styleUrl: './search-page.component.css',
+  templateUrl: './searchpage.component.html',
+  styleUrl: './searchpage.component.css',
 })
 export class SearchPageComponent {
   selectedIngredient = '';

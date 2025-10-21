@@ -9,8 +9,8 @@ import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
   selector: 'app-recipe-detail',
   standalone: true,
   imports: [CommonModule, RouterModule, FontAwesomeModule],
-  templateUrl: './recipe-detail.component.html',
-  styleUrl: './recipe-detail.component.css',
+  templateUrl: './recipedetail.component.html',
+  styleUrl: './recipedetail.component.css',
 })
 export class RecipeDetailComponent implements OnInit {
   recipes: any;

@@ -11,13 +11,15 @@
     <div *ngIf="hasSearched">
       <div *ngIf="recipes.length > 0; else noResults">
         <h2 class="title">Your Search Results:</h2>
-        <div *ngFor="let recipe of recipes" class="meal-item">
-          <div class="meal-img">
-            <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" />
-          </div>
-          <p class="meal-name">{{ recipe.strMeal }}</p>
-          <div class="recipe-btn" (click)="openRecipe(recipe.idMeal)">
-            Get Recipe
+        <div class="recipe-card">
+          <div *ngFor="let recipe of recipes" class="meal-item">
+            <div class="meal-img">
+              <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" />
+            </div>
+            <p class="meal-name">{{ recipe.strMeal }}</p>
+            <div class="recipe-btn" (click)="openRecipe(recipe.idMeal)">
+              Get Recipe
+            </div>
           </div>
         </div>
       </div>
@@ -26,13 +28,15 @@
     <!-- 검색 전 (랜덤 레시피) -->
     <div *ngIf="!hasSearched && recipes.length > 0">
       <h2 class="title">Random Recipe Picks:</h2>
-      <div *ngFor="let recipe of recipes" class="meal-item">
-        <div class="meal-img">
-          <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" />
-        </div>
-        <p class="meal-name">{{ recipe.strMeal }}</p>
-        <div class="recipe-btn" (click)="openRecipe(recipe.idMeal)">
-          Get Recipe
+      <div class="recipe-card">
+        <div *ngFor="let recipe of recipes" class="meal-item">
+          <div class="meal-img">
+            <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" />
+          </div>
+          <p class="meal-name">{{ recipe.strMeal }}</p>
+          <div class="recipe-btn" (click)="openRecipe(recipe.idMeal)">
+            Get Recipe
+          </div>
         </div>
       </div>
     </div>

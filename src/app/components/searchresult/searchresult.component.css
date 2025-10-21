@@ -31,7 +31,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  #meal {
+  .recipe-card {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
@@ -45,7 +45,7 @@
 }
 
 @media screen and (min-width: 992px) {
-  #meal {
+  .recipe-card {
     grid-template-columns: repeat(3, 1fr);
   }
 }

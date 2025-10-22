@@ -1,13 +1,11 @@
 <div class="meal-result">
-  <!-- 로딩 표시 -->
   <div *ngIf="isLoading">
     <p>Loading recipes...</p>
   </div>
 
-  <!-- 로딩이 끝난 경우 -->
+  <!-- after loading -->
   <div *ngIf="!isLoading" id="meal">
-    <!-- 검색 후 -->
-
+    <!-- before search -->
     <div *ngIf="hasSearched">
       <div *ngIf="recipes.length > 0; else noResults">
         <h2 class="title">Your Search Results:</h2>
@@ -25,7 +23,7 @@
       </div>
     </div>
 
-    <!-- 검색 전 (랜덤 레시피) -->
+    <!-- random recipes -->
     <div *ngIf="!hasSearched && recipes.length > 0">
       <h2 class="title">Random Recipe Picks:</h2>
       <div class="recipe-card">
@@ -41,7 +39,6 @@
       </div>
     </div>
 
-    <!-- 검색 후 결과 없을 때 -->
     <ng-template #noResults>
       <h2 class="title">No recipes found.</h2>
     </ng-template>

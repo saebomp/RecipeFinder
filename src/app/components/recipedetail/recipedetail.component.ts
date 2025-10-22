@@ -26,7 +26,6 @@ export class RecipeDetailComponent implements OnInit {
     if (id) {
       this.apiService.getRecipeById(id).subscribe((data: any) => {
         this.recipes = data.meals;
-        console.log(this.recipes);
 
         const meal = this.recipes[0]; // meals 배열에서 첫 번째 요리만 사용
         this.ingredients = Object.keys(meal)
@@ -41,8 +40,6 @@ export class RecipeDetailComponent implements OnInit {
             };
           })
           .filter((item) => item.ingredient); // 빈 값 제거
-
-        console.log('list of ingredients:', this.ingredients);
       });
     }
   }
